@@ -1,4 +1,4 @@
-package com.ceuci.feiraLivre.models;
+package com.ceuci.feiraLivre.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -6,29 +6,36 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
-import com.sun.istack.NotNull;
+import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name="usuario")
-public class UsuarioModel {
+@Table(name="produtor")
+public class ProdutorModel {
 
 	//ATRIBUTOS
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotNull
 	@Column
-	private String nome;
+	@NotNull
+	public String nome;
 	
-	@NotNull
 	@Column
-	private String email;
+	@NotNull
+	public String email;
 	
-	@NotNull
 	@Column
-	private String senha;
+	@NotNull
+	public String senha;
+	
+	@Column
+	@NotNull
+	public String cnpj;
+	
+	@Column
+	@NotNull
+	public String telefone;
 
 	//GETTERS AND SETTERS
 	public Long getId() {
@@ -62,7 +69,20 @@ public class UsuarioModel {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	
-	
 
+	public String getCnpj() {
+		return cnpj;
+	}
+
+	public void setCnpj(String cnpj) {
+		this.cnpj = cnpj;
+	}
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
 }
