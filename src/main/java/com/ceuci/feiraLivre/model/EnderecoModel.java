@@ -5,8 +5,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 @Entity
@@ -46,6 +50,14 @@ public class EnderecoModel {
 	@NotNull
 	public String pais;
 	
+	@ManyToOne
+	@JsonIgnoreProperties("enderecoUsuario")
+	private UsuarioModel usuario;
+	/*
+	@ManyToOne
+	@JsonIgnoreProperties("enderecoProdutor")
+	private ProdutorModel produtor;
+*/
 	//GETTERS AND SETTERS
 	public Long getId() {
 		return id;
@@ -110,4 +122,21 @@ public class EnderecoModel {
 	public void setPais(String pais) {
 		this.pais = pais;
 	}
+
+	public UsuarioModel getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(UsuarioModel usuario) {
+		this.usuario = usuario;
+	}
+/*
+	public ProdutorModel getProdutor() {
+		return produtor;
+	}
+
+	public void setProdutor(ProdutorModel produtor) {
+		this.produtor = produtor;
+	}*/
+	
 }

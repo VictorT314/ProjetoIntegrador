@@ -1,12 +1,18 @@
 package com.ceuci.feiraLivre.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "usuario")
@@ -40,7 +46,11 @@ public class UsuarioModel {
 	@Column
 	@NotNull
 	public String dataNascimento;
-
+	
+	@OneToMany(mappedBy="usuario", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("usuario")
+	private List<EnderecoModel> enderecoUsuario;
+	
 	//GETTERS AND SETTERS
 	public Long getId() {
 		return id;
@@ -97,4 +107,13 @@ public class UsuarioModel {
 	public void setDataNascimento(String dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
+
+	public List<EnderecoModel> getEnderecoUsuario() {
+		return enderecoUsuario;
+	}
+
+	public void setEnderecoUsuario(List<EnderecoModel> enderecoUsuario) {
+		this.enderecoUsuario = enderecoUsuario;
+	}
+	
 }
