@@ -8,10 +8,10 @@
 		<version>2.3.5.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example</groupId>
-	<artifactId>webmvc</artifactId>
+	<groupId>com.ceuci.feiralivre</groupId>
+	<artifactId>feiralivre</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>webmvc</name>
+	<name>ProjetoIntegrador</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
