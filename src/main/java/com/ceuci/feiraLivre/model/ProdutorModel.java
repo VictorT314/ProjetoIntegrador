@@ -42,6 +42,10 @@ public class ProdutorModel {
 	@Column
 	@NotNull
 	public String telefone;
+	
+	@OneToMany(mappedBy="produtor", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("produtor")
+	private List<EnderecoModel> endereco;
 /*
 	@OneToMany(mappedBy="produtor", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("produtor")
@@ -95,12 +99,13 @@ public class ProdutorModel {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
-/*
-	public List<EnderecoModel> getEnderecoProdutor() {
-		return enderecoProdutor;
+
+	public List<EnderecoModel> getEndereco() {
+		return endereco;
 	}
 
-	public void setEnderecoProdutor(List<EnderecoModel> enderecoProdutor) {
-		this.enderecoProdutor = enderecoProdutor;
-	}*/
+	public void setEndereco(List<EnderecoModel> endereco) {
+		this.endereco = endereco;
+	}
+
 }

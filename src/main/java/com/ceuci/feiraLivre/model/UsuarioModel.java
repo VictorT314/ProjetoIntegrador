@@ -49,7 +49,7 @@ public class UsuarioModel {
 	
 	@OneToMany(mappedBy="usuario", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("usuario")
-	private List<EnderecoModel> enderecoUsuario;
+	private List<EnderecoModel> endereco;
 	
 	//GETTERS AND SETTERS
 	public Long getId() {
@@ -108,12 +108,12 @@ public class UsuarioModel {
 		this.dataNascimento = dataNascimento;
 	}
 
-	public List<EnderecoModel> getEnderecoUsuario() {
-		return enderecoUsuario;
+	public List<EnderecoModel> getEndereco() {
+		return endereco;
 	}
 
-	public void setEnderecoUsuario(List<EnderecoModel> enderecoUsuario) {
-		this.enderecoUsuario = enderecoUsuario;
+	public void setEndereco(List<EnderecoModel> enderecoUsuario) {
+		this.endereco = enderecoUsuario;
 	}
 	
 }

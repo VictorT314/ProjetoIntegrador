@@ -1,5 +1,7 @@
 package com.ceuci.feiraLivre.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -51,13 +53,13 @@ public class EnderecoModel {
 	public String pais;
 	
 	@ManyToOne
-	@JsonIgnoreProperties("enderecoUsuario")
+	@JsonIgnoreProperties("endereco")
 	private UsuarioModel usuario;
-	/*
+	
 	@ManyToOne
-	@JsonIgnoreProperties("enderecoProdutor")
+	@JsonIgnoreProperties("endereco")
 	private ProdutorModel produtor;
-*/
+
 	//GETTERS AND SETTERS
 	public Long getId() {
 		return id;
@@ -130,13 +132,13 @@ public class EnderecoModel {
 	public void setUsuario(UsuarioModel usuario) {
 		this.usuario = usuario;
 	}
-/*
+
 	public ProdutorModel getProdutor() {
 		return produtor;
 	}
 
 	public void setProdutor(ProdutorModel produtor) {
 		this.produtor = produtor;
-	}*/
+	} 
 	
 }
