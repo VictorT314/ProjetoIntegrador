@@ -37,6 +37,11 @@ public class ProdutoModel {
 	@JsonIgnoreProperties("produtos")
 	private CategoriaModel categoria;
 	
+	@ManyToOne
+	@JsonIgnoreProperties("produto")
+	private ProdutorModel produtor;
+	
+	
 	//GETTERS AND SETTERS
 
 	public Long getId() {

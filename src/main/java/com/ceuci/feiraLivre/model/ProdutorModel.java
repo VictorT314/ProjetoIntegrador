@@ -46,11 +46,11 @@ public class ProdutorModel {
 	@OneToMany(mappedBy="produtor", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("produtor")
 	private List<EnderecoModel> endereco;
-/*
+
 	@OneToMany(mappedBy="produtor", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("produtor")
-	private List<EnderecoModel> enderecoProdutor;
-	*/
+	private List<ProdutoModel> produtos;
+	
 	//GETTERS AND SETTERS
 	public Long getId() {
 		return id;

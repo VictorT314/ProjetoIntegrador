@@ -51,6 +51,10 @@ public class UsuarioModel {
 	@JsonIgnoreProperties("usuario")
 	private List<EnderecoModel> endereco;
 	
+	@OneToMany(mappedBy="usuario", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("usuario")
+	private List<PedidoModel> pedido;
+	
 	//GETTERS AND SETTERS
 	public Long getId() {
 		return id;
