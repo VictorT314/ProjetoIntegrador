@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -77,5 +79,7 @@ public class PedidoModel {
 	public void setUsuario(UsuarioModel usuario) {
 		this.usuario = usuario;
 	}
+	
+	
 	
 }
