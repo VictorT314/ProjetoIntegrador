@@ -25,31 +25,37 @@ public class PedidoController {
 	@Autowired
 	private PedidoRepository repository;
 	
+	//Pegar todos os pedidos
 	@GetMapping
 	public ResponseEntity<List<PedidoModel>> getAll(){
 		return ResponseEntity.ok(repository.findAll());
 	}
 	
+	//Pedido por ID
 	@GetMapping("/{id}")
 	public ResponseEntity<PedidoModel> getById(@PathVariable Long id){
 		return repository.findById(id).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
 	}
 	
+	//Pedidos acima de 100 reais
 	@GetMapping(value = "/maiorDe100")
 	public ResponseEntity<List<PedidoModel>> findAllMaiorDe100(){
 		return ResponseEntity.ok(repository.findAllMaiorDe100());
 	}
 	
+	//Inserir
 	@PostMapping
 	public ResponseEntity<PedidoModel> post(@RequestBody PedidoModel pedido){
 		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(pedido));
 	}
 	
+	//Atualizar
 	@PutMapping
 	public ResponseEntity<PedidoModel> put(@RequestBody PedidoModel pedido){
 		return ResponseEntity.ok(repository.save(pedido));
 	}
 	
+	//Deletar
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable Long id) {
 		repository.deleteById(id);
