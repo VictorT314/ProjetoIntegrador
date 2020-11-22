@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ceuci.feiraLivre.model.PedidoModel;
 import com.ceuci.feiraLivre.repository.PedidoRepository;
+import com.ceuci.feiraLivre.service.ItensService;
 
 @RestController
 @RequestMapping("/pedido")
@@ -24,6 +25,10 @@ import com.ceuci.feiraLivre.repository.PedidoRepository;
 public class PedidoController {
 	@Autowired
 	private PedidoRepository repository;
+	
+	@Autowired
+	private ItensService itensService;
+	
 	
 	//Pegar todos os pedidos
 	@GetMapping
@@ -46,7 +51,7 @@ public class PedidoController {
 	//Inserir
 	@PostMapping
 	public ResponseEntity<PedidoModel> post(@RequestBody PedidoModel pedido){
-		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(pedido));
+		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(itensService.salvarItens(pedido)));
 	}
 	
 	//Atualizar
