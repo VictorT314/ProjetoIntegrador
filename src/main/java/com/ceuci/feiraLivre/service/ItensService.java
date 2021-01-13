@@ -18,13 +18,22 @@ public class ItensService {
 	private PedidoRepository pedidoRepository;
 	
 	public PedidoModel salvarItens (PedidoModel pedido) {
-		PedidoModel pedidoCriado = pedidoRepository.save(pedido);
+		if(pedido.getId() == null) {
+			PedidoModel pedidoCriado = pedidoRepository.save(pedido);
+			
+			for (ItensModel itens : pedidoCriado.getItens()) {
+				itens.setPedido(new PedidoModel(pedidoCriado.getId()));
+				itensRepository.save(itens);
+			}
+			return pedidoCriado;
+		}else {
 		
-		for (ItensModel itens : pedidoCriado.getItens()) {
-			itens.setPedido(new PedidoModel(pedidoCriado.getId()));
+		for (ItensModel itens : pedido.getItens()) {
+			itens.setPedido(new PedidoModel(pedido.getId()));
 			itensRepository.save(itens);
 		}
-		return pedidoCriado;
+		return pedido;
+		}
 	}
 	
 }

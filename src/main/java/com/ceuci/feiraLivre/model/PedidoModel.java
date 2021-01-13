@@ -13,10 +13,9 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
-
-
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -31,15 +30,14 @@ public class PedidoModel {
 	@Column
 	private double valor;
 	
-	@Column
-	@JsonFormat(pattern = "yyyy-mm-dd")
-	private Date data;
+	@Temporal(TemporalType.TIMESTAMP)
+    private Date data = new java.sql.Date(System.currentTimeMillis());
 	
 	@Column
 	private int quantidadeItens;
 	
 	@ManyToOne
-	@JsonIgnoreProperties
+	@JsonIgnoreProperties("pedido")
 	private UsuarioModel usuario;
 	
 	@OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
@@ -102,7 +100,5 @@ public class PedidoModel {
 	public void setItens(List<ItensModel> itens) {
 		this.itens = itens;
 	}
-	
-	
-	
+
 }

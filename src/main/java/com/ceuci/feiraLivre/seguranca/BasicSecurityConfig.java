@@ -30,10 +30,13 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter{
 	@Override
 	protected void configure(HttpSecurity http) throws Exception{
 		http.authorizeRequests()
+		.antMatchers("/**").permitAll() 
 		.antMatchers("/usuario/logar").permitAll()
 		.antMatchers("/usuario/cadastrar").permitAll()
 		.antMatchers("/produtor/logar").permitAll()
 		.antMatchers("/produtor/cadastrar").permitAll()
+		.antMatchers("/produto").permitAll()
+		.antMatchers("/produto/titulo/{nome}").permitAll()
 		.anyRequest().authenticated()
 		.and().httpBasic()
 		.and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
